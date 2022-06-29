@@ -1,0 +1,35 @@
+<%- include('header'); -%>
+    <div class="box" id="heading">
+
+        <h1>
+            <%= dayName %>
+        </h1>
+    </div>
+    
+    <div class="box">
+
+        <% item.forEach(function(single_item){ %>
+
+            <form action="/delete/<%= type %>" method="post">
+            <div class="items">
+                <input type="checkbox">
+                <p>
+                    <%= single_item.name %>
+                </p>
+
+                    <div class="delete">
+                        <button name="_id" value="<%= single_item._id %>">
+                            <i class="fa fa-trash-o" style="font-size:24px"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        <% }) %>
+
+                <form action="/<%= type %>" method="POST" class="item">
+                    <input type="text" name="new_item" placeholder="New itme">
+                    <button type="submit" id="button1">+</button>
+
+                </form>
+    </div>
+    <%- include('footer'); -%>
